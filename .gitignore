@@ -1,0 +1,59 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build outputs
+target/
+**/target/
+.anchor/
+dist/
+build/
+out/
+
+# Next.js
+.next/
+**/.next/
+
+# IDL files (regenerated)
+**/idl/*.json
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Solana
+test-ledger/
+.program-id
+
+# Rust
+**/*.rs.bk
+Cargo.lock
+
+# TypeScript
+*.tsbuildinfo
+
+# Testing
+coverage/
+.nyc_output/
+
+# Temporary files
+tmp/
+temp/
