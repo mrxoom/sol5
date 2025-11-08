@@ -61,8 +61,11 @@ export default function AssetPage() {
 
         const [epochPda] = getEpochPda(assetSymbol as string, epochId);
 
-        const epochAccount = await program.account.epoch.fetch(epochPda);
-        setEpoch(epochAccount);
+        // Check if program has account methods (will be undefined with placeholder IDL)
+        if (program.account && (program.account as any).epoch) {
+          const epochAccount = await (program.account as any).epoch.fetch(epochPda);
+          setEpoch(epochAccount);
+        }
         setLoading(false);
       } catch (err) {
         console.error("Failed to load epoch:", err);
@@ -121,7 +124,7 @@ export default function AssetPage() {
 
       const betSide = side === "up" ? { up: {} } : { down: {} };
 
-      const tx = await program.methods
+      const tx = await (program as any).methods
         .placeBet(
           assetSymbol,
           new anchor.BN(epochId),
@@ -144,8 +147,10 @@ export default function AssetPage() {
       alert(`Bet placed! Transaction: ${tx}`);
 
       // Reload epoch data
-      const epochAccount = await program.account.epoch.fetch(epochPda);
-      setEpoch(epochAccount);
+      if (program.account && (program.account as any).epoch) {
+        const epochAccount = await (program.account as any).epoch.fetch(epochPda);
+        setEpoch(epochAccount);
+      }
     } catch (err: any) {
       console.error("Failed to place bet:", err);
       alert(`Failed to place bet: ${err.message}`);

@@ -28,7 +28,7 @@ export function getProvider(wallet: AnchorWallet): AnchorProvider {
  * Get the Betting program instance
  */
 export function getProgram(provider: AnchorProvider): BettingProgram {
-  return new Program(IDL as any, PROGRAM_ID, provider);
+  return new Program(IDL as any, provider);
 }
 
 /**
