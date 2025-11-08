@@ -1,0 +1,25 @@
+[build]
+  base = "app"
+  command = "npm install && npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  NEXT_PUBLIC_RPC_HTTP = "https://fragrant-orbital-road.solana-devnet.quiknode.pro/ba431041d0ed9de5c4535123b41648fc39385a89/"
+  NEXT_PUBLIC_RPC_WS = "wss://fragrant-orbital-road.solana-devnet.quiknode.pro/ba431041d0ed9de5c4535123b41648fc39385a89/"
+  NEXT_PUBLIC_USDC_MINT = "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+  NEXT_PUBLIC_TREASURY_PUBKEY = "Fknqi2gLwBtdcHqYWGR7NGewWyLWsquThnbPtXLSXrcJ"
+  NEXT_PUBLIC_PYTH_BTC = "HovQMDrbAgAYPCmHVSrezcSmkMtXSSUsLDFANExrZh2J"
+  NEXT_PUBLIC_PYTH_ETH = "EdVCmQ9FSPcVe5YySXDPCRmc8aDQLKJ9xvYBMZPie1Vw"
+  NEXT_PUBLIC_PYTH_SOL = "J83w4HKfqxwcq3BEMMkPFSppX3gqekLyLJBexebFVkix"
+
+# Note: NEXT_PUBLIC_PROGRAM_ID will need to be set after deploying the Solana program
+# Add it in Netlify dashboard: Site settings > Environment variables
+# Or update this file and redeploy after getting your PROGRAM_ID
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
